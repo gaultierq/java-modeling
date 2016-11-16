@@ -1,0 +1,14 @@
+
+apply plugin: 'java'
+
+
+    repositories {
+        jcenter()
+    }
+
+
+dependencies {  
+  
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+	compile 'org.json:json:20160810'    
+}

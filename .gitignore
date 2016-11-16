@@ -1,0 +1,32 @@
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+
+# OSX + Windows files
+*.DS_Store
+*.ini
+
+# Gradle files
+.gradle/
+build/
+/*/build/
+
+# IDEA/Android Studio project files, because
+# the project can be imported from settings.gradle
+.idea
+*.iml
+
+# Old-style IDEA project files
+*.ipr
+*.iws
+
+.project
+.settings
+.classpath
+.externalToolBuilders
+
+# Gradle cache
+.gradle
