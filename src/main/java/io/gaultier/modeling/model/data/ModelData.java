@@ -212,7 +212,7 @@ public abstract class ModelData<T extends ModelData<T>> {
 		for (FieldDefinition<?, T> f : getDefinition().getFields()) {
 			Object fin = getValue(f);
 			Object ini = other.getValue(f);
-			if (!areEquals(fin, ini)) {
+			if (!areEquals(fin, ini)) { //TODO: dive in object/list values
 				diff = (diff == null ? "" : diff) + f.getName() + ":"+ fin + "!="+ ini + ","; 
 			}
 		}
