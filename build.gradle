@@ -9,8 +9,9 @@ apply plugin: 'java'
 
 dependencies {  
     
-    compile 'com.google.code.javaparser:javaparser:1.0.0'
-    compile 'commons-codec:commons-codec:1.7'
+    //compile 'com.google.code.javaparser:javaparser:1.0.1'
+    //compile 'commons-codec:commons-codec:1.7'
     
+	compile fileTree(include: ['*.jar'], dir: 'libs')    
 	compile 'org.json:json:20160810'    
 }
