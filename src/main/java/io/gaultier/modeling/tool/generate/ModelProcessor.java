@@ -46,7 +46,8 @@ public class ModelProcessor {
             c.write();
         }
 
-        writeDataObjectRegistery(cs, "sittor.model");//TODO program param
+        //TODO program param
+        writeDataObjectRegistery(cs, "com.babysittor.model");
 
     }
 

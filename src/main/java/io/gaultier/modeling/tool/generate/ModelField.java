@@ -416,18 +416,44 @@ public class ModelField {
 	}
 
 	void writeAccessorsOld(JavaWriter w) {
+
+		//getter
 		writeDeprecated(w);
-		if (getJavaType().indexOf('<') >= 0) {
+		if (((String) getJavaType()).indexOf('<') >= 0) {
 			w.writeln("@" + SuppressWarnings.class.getName() + "(\"unchecked\")");
 		}
-		w.writeln("public final " + getJavaType() + " get" + toMethod(name) + "() {");
+		w.writeln("public " + getJavaType() + " get" + toMethod(name) + "() {");
 		w.writeln("return " + getValueAccessor("getValue(" + index + ")") + ";");
 		w.writeln("}");
 
+
+		//setter
 		writeDeprecated(w);
-		w.writeln("public final void set" + toMethod(name) + "(" + getJavaType() + " " + name + ") {");
+		w.writeln("public void set" + toMethod(name) + "(" + getJavaType() + " " + name + ") {");
 		w.writeln("setValue(" + index + ", " + name + ");");
 		w.writeln("}");
+
+		//edit
+		writeDeprecated(w);
+        w.writeln("@" + SuppressWarnings.class.getName() + "(\"unchecked\")");
+        String editJavaType = findEditJavaType();
+        w.writeln("public " + editJavaType + " edit" + toMethod(name) + "() {");
+		w.writeln("return" + "(" + editJavaType + ")" + " getEditValue(" + index + ");");
+		w.writeln("}");
+	}
+
+	private String findEditJavaType() {
+		String editJavaType;
+		if (isList()) {
+			editJavaType = "android.databinding.ObservableList<" + list.getFullName() + ">";
+		}
+		else if (object != null) {
+			editJavaType = object.getFullName();
+		}
+		else {
+			editJavaType = "android.databinding.ObservableField<" + getJavaType() + ">";
+		}
+		return editJavaType;
 	}
 
 	void writeFieldOld(JavaWriter w) {
@@ -840,10 +866,26 @@ public class ModelField {
 
 
 	public static String toMethod(String n) {
-		return n.substring(0, 1).toUpperCase() + n.substring(1);
+		return camelCaseFromUnderscore(n);
 	}
 
 	public static String toField(String n) {
 		return "_" + n;
 	}
+
+    public static String capitalize(String s) {
+        if (s == null || s.isEmpty()) {
+            return s;
+        }
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
+
+    public static String camelCaseFromUnderscore(String input) {
+        StringBuilder b = new StringBuilder();
+        for (String el : input.split("_")) {
+            b.append(capitalize(el.toLowerCase()));
+        }
+        return b.toString();
+    }
 }
