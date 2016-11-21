@@ -434,13 +434,13 @@ public class ModelField {
 		w.writeln("return ("+clazz.getQualifiedName()+") this;");
 		w.writeln("}");
 
-		//edit
-		writeDeprecated(w);
-        w.writeln("@" + SuppressWarnings.class.getName() + "(\"unchecked\")");
-        String editJavaType = findEditJavaType();
-        w.writeln("public " + editJavaType + " edit" + toMethod(name) + "() {");
-		w.writeln("return" + "(" + editJavaType + ")" + " getEditValue(" + index + ");");
-		w.writeln("}");
+//		//edit
+//		writeDeprecated(w);
+//        w.writeln("@" + SuppressWarnings.class.getName() + "(\"unchecked\")");
+//        String editJavaType = findEditJavaType();
+//        w.writeln("public " + editJavaType + " edit" + toMethod(name) + "() {");
+//		w.writeln("return" + "(" + editJavaType + ")" + " getEditValue(" + index + ");");
+//		w.writeln("}");
 	}
 
 	private String findEditJavaType() {
