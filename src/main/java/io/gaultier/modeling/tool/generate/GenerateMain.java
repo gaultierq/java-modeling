@@ -20,7 +20,7 @@ public class GenerateMain {
             }
         } else {
             System.out.println("processing:" + file.getName());
-            if (file.getName().endsWith(".java")) {
+            if (file.getName().endsWith("Data.java")) {
                 model.loadClass(file);
             }
         }
