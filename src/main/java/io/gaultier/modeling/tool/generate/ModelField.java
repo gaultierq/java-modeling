@@ -429,8 +429,9 @@ public class ModelField {
 
 		//setter
 		writeDeprecated(w);
-		w.writeln("public void set" + toMethod(name) + "(" + getJavaType() + " " + name + ") {");
+		w.writeln("public "+clazz.getQualifiedName()+" set" + toMethod(name) + "(" + getJavaType() + " " + name + ") {");
 		w.writeln("setValue(" + index + ", " + name + ");");
+		w.writeln("return ("+clazz.getQualifiedName()+") this;");
 		w.writeln("}");
 
 		//edit
