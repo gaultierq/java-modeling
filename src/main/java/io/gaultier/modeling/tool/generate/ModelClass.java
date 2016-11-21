@@ -231,6 +231,7 @@ public class ModelClass implements Comparable<ModelClass> {
 
         writeConstructor(w);
         writeGetDef(w);
+        writeConverter(w);
 //        writeGetDao(w);
 //        writeSerialize(w);
         
@@ -260,6 +261,24 @@ public class ModelClass implements Comparable<ModelClass> {
         w.writeln("@" + Override.class.getName());
         w.writeln("public final " + JavaWriter.DATA_DEFINITION + "<" + getQualifiedName() + "> getDefinition() {");
         w.writeln("return " + getDefinitionConstant() + ";");
+        w.writeln("}");
+    }
+
+//    public static class ParcelConverter extends ModelDataParcelConverter<UserData> {
+//
+//        @Override
+//        public DataDefinition getDefinition() {
+//            return UserData.DEFINITION;
+//        }
+//    }
+
+	private void writeConverter(JavaWriter w) {
+        w.writeln("public static class ParcelConverter extends com.babysittor.model.serialize.parcel.ModelDataParcelConverter<"+getQualifiedName()+"> {");
+        w.writeln("");
+        w.writeln("@Override");
+        w.writeln("public " + JavaWriter.DATA_DEFINITION + " getDefinition() {");
+        w.writeln("return "+getQualifiedName()+".DEFINITION;");
+        w.writeln("}");
         w.writeln("}");
     }
 
