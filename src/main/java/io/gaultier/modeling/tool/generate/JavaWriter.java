@@ -12,8 +12,8 @@ public class JavaWriter {
     static final String ID = "io.gaultier.modeling.model.Id";
     static final String ABSTRACT_DAO = "io.gaultier.modeling.model.dao.AbstractDao";
     static final String DATA_DEFINITION = "io.gaultier.modeling.model.data.DataDefinition";
-    //static final String DATA_LIST = "io.gaultier.modeling.model.data.DataList";
-    static final String DATA_LIST = "java.util.List";
+    static final String DATA_LIST = "io.gaultier.modeling.model.data.DataList";
+    //static final String DATA_LIST = "java.util.List";
     static final String FIELD_DEFINITION = "io.gaultier.modeling.model.data.FieldDefinition";
     static final String FIELD_TYPE = "io.gaultier.modeling.model.data.FieldType";
     static final String MODEL_DATA = "io.gaultier.modeling.model.data.ModelData";
