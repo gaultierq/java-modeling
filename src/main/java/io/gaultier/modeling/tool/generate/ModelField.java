@@ -467,10 +467,10 @@ public class ModelField {
 
 	private String getValueAccessor(String value) {
 		if (type != null) {
-			switch (type) {
-			case BOOLEAN:
-				return value + " == null ? Boolean.FALSE : (" + Boolean.class.getName() + ") " + value;
-			}
+//			switch (type) {
+//			case BOOLEAN:
+//				return value + " == null ? Boolean.FALSE : (" + Boolean.class.getName() + ") " + value;
+//			}
 		}
 		return "(" + getJavaType() + ") " + value; //identity
 	}
